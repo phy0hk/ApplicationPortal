@@ -1,0 +1,51 @@
+<script>
+    const profile = document.getElementById("profile")
+    const appearance = document.getElementById("appearance")
+    const notifications = document.getElementById("notifications")
+    const security = document.getElementById("security")
+    const appearanceContainer = document.getElementById("appearanceContainer")
+
+    let currentSetting = "appearance"
+
+    togglePage(currentSetting)
+    function togglePage(page: string){
+        switch(page){
+            case "profile": profile?.classList.toggle("text-secondary");
+            break;
+            case "appearance":appearance?.classList.toggle("text-secondary");
+            appearanceContainer?.classList.toggle("hidden");
+            break;
+            case "notifications":notifications?.classList.toggle("text-secondary");break;
+            case "security":security?.classList.toggle("text-secondary");break;
+        }
+    }
+
+    profile?.addEventListener("click",()=>{
+        if(currentSetting!=="profile"){
+            togglePage(currentSetting)
+            currentSetting="profile";
+            togglePage("profile");
+        }
+    })
+    appearance?.addEventListener("click",()=>{
+        if(currentSetting!=="appearance"){
+            togglePage(currentSetting);
+            currentSetting="appearance";
+            togglePage("appearance");
+        }
+    })
+    notifications?.addEventListener("click",()=>{
+        if(currentSetting!=="notifications"){
+            togglePage(currentSetting)
+            currentSetting="notifications";
+            togglePage("notifications");
+        }
+    })
+    security?.addEventListener("click",()=>{
+        if(currentSetting!=="security"){
+            togglePage(currentSetting)
+            currentSetting="security";
+            togglePage("security");
+        }
+    })
+</script>

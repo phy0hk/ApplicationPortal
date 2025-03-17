@@ -1,0 +1,43 @@
+---
+import {House,LayoutTemplate,Folder,Star,Clock,Lightbulb,Bookmark,Settings,Info} from 'lucide-static'
+import SideButton from "./microComponents/SideMenuButtons.astro"
+---
+<div class="flex flex-row sticky top-0 max-md:absolute w-80 max-md:w-full overflow-hidden h-dvh max-md:z-50 max-md:transform max-md:ease-in-out max-md:duration-300 max-md:-translate-x-full" id="sidemenu">
+    <div class="sidemenu-primary border-primary border-r-1 w-100">
+        <header class="h-18 flex items-center justify-center">
+            <h1 class="text-primary font-bold text-2xl">App Portal</h1>
+        </header>
+            <div class="">
+                <div class="w-full h-auto">
+                    <div class="flex flex-col gap-1">
+                        <SideButton label="Home" icon={House} page="/"/>
+                        <SideButton label="Dashboard" icon={LayoutTemplate} page="/dashboard" />
+                    </div>
+                    <div  class="flex flex-col w-full">
+                        <div class="text-primary text-md px-2 py-4">Applications</div>
+                        <div class="w-full flex flex-col gap-1">
+                        <SideButton label="All Apps" icon={Folder} page="/allapps" />
+                        <SideButton label="Completed" icon={Star} page="/star"/>
+                        <SideButton label="In Progress" icon={Clock} page="/inprogress"/>
+                        <SideButton label="Ideas" icon={Lightbulb} page="/ideas"/>
+                        <SideButton label="Bookmark" icon={Bookmark} page="/bookmark"/>
+                    </div>
+                    </div>
+                </div>
+                <div class="flex flex-col h-auto w-full absolute bottom-0">
+                    <SideButton label="Settings" icon={Settings} page="/settings"/>
+                    <SideButton label="About" icon={Info} page="/about" />
+                </div>
+                <!-- <div>
+                </div> -->
+            </div>    
+        </div>
+        <div class="w-full bg-[#000000aa] md:hidden"></div>
+</div>
+<script>
+     const sidemenuBtn = document.getElementById("openSidemenu")
+     const sidemenu = document.getElementById("sidemenu")   
+     sidemenuBtn?.addEventListener("click",()=>{
+             sidemenu?.classList.toggle("max-md:-translate-x-full")    
+        })
+</script>

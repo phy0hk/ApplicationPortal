@@ -1,0 +1,25 @@
+<button
+id="toggle-btn"
+class="w-14 h-7 flex items-center rounded-full bg-gray-400 p-1 transition-colors duration-300"
+>
+<div
+  id="circle"
+  class="w-5 h-5 bg-white rounded-full shadow-md transform transition-transform duration-300"
+></div>
+</button>
+<script> 
+  let darkmodeIsOn = localStorage.getItem("darkmode")==="true"
+  const toggleBtn = document.getElementById("toggle-btn");
+  changeState()
+    toggleBtn?.addEventListener("click",()=>{toggle()});
+    function toggle(){
+      localStorage.setItem("darkmode",!darkmodeIsOn+"")
+      darkmodeIsOn=!darkmodeIsOn;changeState();
+      document.documentElement.classList.toggle("dark",localStorage.getItem("darkmode")==="true");
+    }
+      function changeState() {
+          toggleBtn?.classList.toggle('bg-blue-500', darkmodeIsOn);
+          toggleBtn?.classList.toggle('bg-gray-400', !darkmodeIsOn);
+          document.getElementById('circle')?.classList.toggle('translate-x-7', darkmodeIsOn);
+}
+</script>

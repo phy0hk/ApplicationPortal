@@ -1,1 +1,66 @@
 @import "tailwindcss";
+:root {
+    /* Light theme (default) */
+    --bg-primary: #f4f4f5;      
+    --button-bg-primary:#f4f4f5;
+    --border-primary: #d1d5db;   
+    --text-primary: #000000;
+    --outline-primary:#2563eb;
+    --hover-button-primary:#e4e4e7;
+    --button-text:#000000;
+    --bg-header:#ffffff;
+    --text-secondary:#52525b;
+    --side-menu-foreground: #f3f3f6;
+    --side-menu-button-hover:#d1d5db;
+}
+
+.dark {
+    /* Dark theme */
+    --bg-primary: #070708;     
+    --button-bg-primary: #f4f4f5; 
+    --border-primary: #404040;   
+    --text-primary: #ffffff;  
+    --outline-primary: #404040;
+    --hover-button-primary:#e4e4e7;
+    --button-text:#000000;
+    --bg-header:#09090B;
+    --text-secondary:#a1a1aa;
+    --side-menu-foreground: #18181b;
+    --side-menu-button-hover:#374151;
+}
+
+/* Apply variables to classes */
+.background-primary {
+    background-color: var(--bg-primary);
+}
+
+.button-primary{
+    background-color: var(--button-bg-primary);
+    color:var(--button-text)
+}
+
+.border-primary {
+    border-color: var(--border-primary);
+}
+
+.text-primary {
+    color: var(--text-primary);
+}
+.outline-primary{
+    outline-color: var(--outline-primary);
+}
+.button-primary:hover{
+    background-color: var(--hover-button-primary);
+}
+.bg-header{
+    background-color: var(--bg-header);
+}
+.text-secondary{
+    color: var(--text-secondary);
+}
+.sidemenu-primary{
+    background-color: var(--side-menu-foreground);
+}
+.sidemenu-button:hover{
+    background-color: var(--side-menu-button-hover);
+}

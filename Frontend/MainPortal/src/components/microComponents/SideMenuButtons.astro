@@ -1,0 +1,7 @@
+---
+const {label,customClass,icon,page} = Astro.props
+---
+<a href={page} class=`flex flex-row gap-2 text-lg items-center p-2 sidemenu-button text-primary ${customClass}`>
+    <Fragment set:html={icon} />
+    {label}
+</a>
