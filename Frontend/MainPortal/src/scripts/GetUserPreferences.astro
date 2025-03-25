@@ -1,0 +1,7 @@
+<script>
+    async function getUserPreferences(){
+        const body = await fetch("http://localhost:3000/api/getUserPreferences",{headers:{method:"GET",secrets:"12345"}});
+        console.log(await body.json())
+    }
+    getUserPreferences()
+</script>

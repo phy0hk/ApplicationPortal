@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rotating 3D Menger Sponge</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script>
+    let initial_s = 300; // Initial size of the sponge
+    let level = 1;       // Recursion level (adjustable; 2 keeps performance reasonable)
+
+    function setup() {
+      createCanvas(600, 600, WEBGL); // Create a 600x600 canvas with WEBGL renderer
+    }
+
+    function draw() {
+      background(0); // Black background for contrast
+
+      // Lighting setup
+      ambientLight(50); // Base illumination
+      let r = 300;      // Orbit radius for the light
+      let angle = frameCount * 0.1; // Orbit speed
+      let lightPosX = r * cos(angle);
+      let lightPosY = r * sin(angle);
+      let lightPosZ = 0; // Light orbits in XY plane
+      pointLight(255, 255, 255, lightPosX, lightPosY, lightPosZ); // White orbiting light
+
+      // Rotate the entire scene
+      rotateY(frameCount * 0.1); // Slow rotation around Y-axis
+      rotateX(frameCount * 0.1);
+
+      // Draw the Menger sponge
+      drawMenger(level, initial_s, 0, 0, 0); // Centered at origin
+    }
+
+    function drawMenger(level, s, posX, posY, posZ) {
+      if (level === 0) {
+        // Base case: draw a cube
+        push(); // Save transformation state
+        translate(posX, posY, posZ); // Move to cube's position
+        let colorValue = map(posX, -initial_s / 2, initial_s / 2, 0, 255); // Gradient based on X-position
+        fill(colorValue, 0, 255 - colorValue); // Red-to-blue gradient
+        specularMaterial(255); // White specular highlight
+        shininess(32); // Shiny surface
+        box(s); // Draw cube of size s
+        pop(); // Restore transformation state
+      } else {
+        // Recursive case: generate sub-cubes
+        for (let i = 0; i < 3; i++) {
+          for (let j = 0; j < 3; j++) {
+            for (let k = 0; k < 3; k++) {
+              let count = (i === 1 ? 1 : 0) + (j === 1 ? 1 : 0) + (k === 1 ? 1 : 0);
+              if (count < 2) { // Keep cubes with fewer than 2 middle indices
+                let x_sub = (i - 1) * (s / 3);
+                let y_sub = (j - 1) * (s / 3);
+                let z_sub = (k - 1) * (s / 3);
+                drawMenger(level - 1, s / 3, posX + x_sub, posY + y_sub, posZ + z_sub);
+              }
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <main></main>
+</body>
+</html>
