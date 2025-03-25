@@ -3,7 +3,7 @@ import { Router } from "jsr:@oak/oak/router";
 import { mainPortalRouter } from "./Applications/MainPortal/Router/Main.ts";
 import "https://deno.land/std@0.181.0/dotenv/load.ts";
 const app = new Application();
-const port:number = Deno.env.get("PORT") | 3000;
+const port:any = Deno.env.get("PORT") || 3000;
 
 app.use(mainPortalRouter.routes());
 app.use(mainPortalRouter.allowedMethods());
