@@ -1,7 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css"
+import { CheckSquare } from "lucide-static";
+import AppCard from "../components/AppCard.astro";
+// const response = await fetch(`http://localhost:3000/api/getAppCard`);
 ---
 <Layout>
-    <div class="h-dvh"></div>
+    <div class="min-h-dvh p-5 w-full">
+        <div class="w-full flex justify-start items-center flex-wrap gap-5 max-md:justify-center">
+            <AppCard AppColor="bg-[#34d399]" BorderColor="border-[#34d399]" TextColor="text-[#34d399]" ShortInfo="Lorem Ipsumasd adfjladsfl sadfdas sadfsadf adsfds adfsasdf" AppName="Advance ToDoList" AppIcon={CheckSquare} Link="/app/advanceToDoList"/>
+        </div>
+    </div>
 </Layout>

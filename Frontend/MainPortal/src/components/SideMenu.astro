@@ -2,7 +2,7 @@
 import {House,LayoutTemplate,Folder,Star,Clock,Lightbulb,Bookmark,Settings,Info} from 'lucide-static'
 import SideButton from "./microComponents/SideMenuButtons.astro"
 ---
-<div class="flex flex-row sticky top-0 max-md:absolute w-80 max-md:w-full overflow-hidden h-dvh max-md:z-50 max-md:transform max-md:ease-in-out max-md:duration-300 max-md:-translate-x-full" id="sidemenu">
+<div class="flex flex-row sticky max-md:fixed top-0 left-0 w-60 max-md:w-full h-dvh max-md:z-50 max-md:transform max-md:ease-in-out max-md:duration-300 max-md:-translate-x-full" id="sidemenu">
     <div class="sidemenu-primary border-primary border-r-1 w-100">
         <header class="h-18 flex items-center justify-center">
             <h1 class="text-primary font-bold text-2xl">App Portal</h1>
@@ -32,12 +32,27 @@ import SideButton from "./microComponents/SideMenuButtons.astro"
                 </div> -->
             </div>    
         </div>
-        <div class="w-full bg-[#000000aa] md:hidden"></div>
+        <div class="w-full max-md:ease-in-out md:hidden" id="sidemenu-free-space"></div>
 </div>
 <script>
-     const sidemenuBtn = document.getElementById("openSidemenu")
-     const sidemenu = document.getElementById("sidemenu")   
-     sidemenuBtn?.addEventListener("click",()=>{
-             sidemenu?.classList.toggle("max-md:-translate-x-full")    
-        })
+    const sidemenuBtn = document.getElementById("openSidemenu")
+    const sidemenuFreeSpace = document.getElementById("sidemenu-free-space")
+    const sidemenu = document.getElementById("sidemenu")   
+    const root = document.getElementById("root")
+    sidemenuBtn?.addEventListener("click",()=>{
+        sidemenu?.classList.toggle("max-md:-translate-x-full")
+        sidemenuFreeSpace?.classList.toggle("duration-800")
+        // sidemenu?.classList.toggle("max-md:absolute")
+        // sidemenu?.classList.toggle("max-md:hidden")
+        sidemenuFreeSpace?.classList.toggle("bg-[#000000aa]")
+        root?.classList.toggle("overflow-hidden")
+    })
+    sidemenuFreeSpace?.addEventListener("click",()=>{
+        sidemenuFreeSpace?.classList.toggle("duration-800")
+        // sidemenu?.classList.toggle("max-md:absolute")
+        // sidemenu?.classList.toggle("max-md:hidden")    
+        sidemenu?.classList.toggle("max-md:-translate-x-full")
+        sidemenuFreeSpace?.classList.toggle("bg-[#000000aa]")
+        root?.classList.toggle("overflow-hidden")
+    })
 </script>

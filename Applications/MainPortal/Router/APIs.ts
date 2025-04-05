@@ -22,6 +22,7 @@ APIRouter.get("/getUserPreferences",async (ctx)=>{
   const header = ctx.request.headers
 
   if(header.get("secrets")==="12345"){
+    //fetch data from database and then send it
     ctx.response.body = {Success:true,darkmode:false}
   }else{
     ctx.response.body = {Success:false,ErrorMsg:"Invalid Secrets"}

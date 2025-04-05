@@ -1,0 +1,13 @@
+---
+import {ChevronRight} from 'lucide-static'
+const {AppColor,AppName,ShortInfo,BorderColor,TextColor,AppIcon,Link} = Astro.props;
+
+---
+<div class="max-w-96 md:1/4 sm:w-4/9 w-11/12 rounded-md">
+    <div class=`h-25 ${AppColor} rounded-t-md flex items-center justify-center appicon`><Fragment set:html={AppIcon} class="gg"/></div>
+    <div class="h-43 card-bg p-3 rounded-b-md gap-2 flex flex-col justify-center">
+        <h1 class="font-semibold text-primary text-lg">{AppName}</h1>
+        <p class="text-secondary h-12 ">{ShortInfo}</p>
+        <a href={Link} class=`flex flex-row text-top justify-center items-center ${BorderColor} border-1 cursor-pointer mt-2 w-full h-8 p-4 hover-bg`><div class="h-7.5">Open</div><div class=`${TextColor}`><Fragment set:html={ChevronRight}/></div></a>
+    </div>
+</div>

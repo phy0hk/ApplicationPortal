@@ -2,16 +2,17 @@
 :root {
     /* Light theme (default) */
     --bg-primary: #f4f4f5;      
-    --button-bg-primary:#f4f4f5;
+    --button-bg-primary:#1d1d1d;
     --border-primary: #d1d5db;   
     --text-primary: #000000;
     --outline-primary:#2563eb;
-    --hover-button-primary:#e4e4e7;
-    --button-text:#000000;
+    --hover-button-primary:#444444;
+    --button-text:#ffffff;
     --bg-header:#ffffff;
     --text-secondary:#52525b;
-    --side-menu-foreground: #f3f3f6;
+    --side-menu-foreground: #f0f0f0;
     --side-menu-button-hover:#d1d5db;
+    --card-bg:#efefef;
 }
 
 .dark {
@@ -27,6 +28,7 @@
     --text-secondary:#a1a1aa;
     --side-menu-foreground: #18181b;
     --side-menu-button-hover:#374151;
+    --card-bg:#12121a;
 }
 
 /* Apply variables to classes */
@@ -63,4 +65,14 @@
 }
 .sidemenu-button:hover{
     background-color: var(--side-menu-button-hover);
+}
+.card-bg{
+    background-color: var(--card-bg);
+}
+.hover-bg:hover{
+    background-color: var(--side-menu-button-hover);
+}
+.appicon svg{
+    width: 35px;
+    height: 35px;
 }
