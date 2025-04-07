@@ -4,19 +4,24 @@
     const notifications = document.getElementById("notifications")
     const security = document.getElementById("security")
     const appearanceContainer = document.getElementById("appearanceContainer")
+    const profileContainer = document.getElementById("profileContainer")
+    const notificationsContainer = document.getElementById("notificationsContainer")
 
-    let currentSetting = "appearance"
+    let currentSetting = "profile"
 
     togglePage(currentSetting)
     function togglePage(page: string){
         switch(page){
             case "profile": profile?.classList.toggle("text-secondary");
+            profileContainer?.classList.toggle("hidden");
             break;
             case "appearance":appearance?.classList.toggle("text-secondary");
             appearanceContainer?.classList.toggle("hidden");
             break;
-            case "notifications":notifications?.classList.toggle("text-secondary");break;
-            case "security":security?.classList.toggle("text-secondary");break;
+            case "notifications":notifications?.classList.toggle("text-secondary");
+            break;
+            case "security":security?.classList.toggle("text-secondary");
+            break;
         }
     }
 

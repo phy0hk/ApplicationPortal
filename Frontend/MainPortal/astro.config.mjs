@@ -11,4 +11,8 @@ export default defineConfig({
     vite: {
         plugins: [tailwindcss()],
       },
+    // server: {
+    //   // @ts-ignore
+    //   allowedHosts:"joy-ver-oliver-hopkins.trycloudflare.com"
+    // }
 });

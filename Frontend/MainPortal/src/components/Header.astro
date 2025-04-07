@@ -1,10 +1,12 @@
 ---
+import HamburgarMenu from "./microComponents/HamburgarMenu.astro"
 ---
 <!-- main header container -->
 <headerdiv class=`w-full sticky top-0 h-18 border-b-1 flex justify-between items-center px-5 py-2 border-primary bg-header` id="header">
     <div class="w-1/2 flex items-center gap-10">
         <a href="/" class="text-primary font-bold text-xl w-20 max-md:hidden">App Portal</a>
-        <button id="openSidemenu" class="bg-white p-2 rounded md:hidden">Sidebar</button>
+        <!-- <button id="openSidemenu" class="bg-white p-2 rounded md:hidden">Sidebar</button> -->
+         <HamburgarMenu/>
         <!-- <input type="text" class="md:w-1/2 lg:w-1/3 h-10 border-1 rounded text-primary p-1 focus:outline-2 outline-primary border-primary" placeholder="Search....." /> -->
     </div>
     <button class="px-4 py-2 button-primary rounded" id="login">Login</button>
