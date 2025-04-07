@@ -76,3 +76,10 @@
     width: 35px;
     height: 35px;
 }
+.profile-edit svg{
+    width: 20px;
+    height: 20px;
+}
+.profile-edit svg:hover{
+    color:rgb(160, 159, 255);
+}
