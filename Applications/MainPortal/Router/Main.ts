@@ -4,6 +4,8 @@ import {handle} from "../UIResources/dist/server/entry.mjs"
 import {serveFile} from "https://deno.land/std/http/file_server.ts";
 const astroPort = 8085;
 const mainPortalRouter = new Router();
+mainPortalRouter.use("/api", APIRouter.routes());
+mainPortalRouter.use(APIRouter.allowedMethods());
 mainPortalRouter.get("/assets/:path",async (ctx) => {
   try {
     await ctx.send({ root: `${Deno.cwd()}/Applications/MainPortal/UIResources/dist/client/` });
@@ -12,7 +14,6 @@ mainPortalRouter.get("/assets/:path",async (ctx) => {
     ctx.response.body = "File not found";
   }
 });
-mainPortalRouter.use("/api", APIRouter.routes(), APIRouter.allowedMethods());
 mainPortalRouter.get("/(.*)", async(ctx)=>{
   const path = ctx.request.url.pathname;
   
