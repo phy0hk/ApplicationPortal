@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro Timer</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="w-[100vw] h-[100vh] bg-primary flex flex-col items-center">
+    <header class="w-130 max-w-full h-20 p-2">
+      <div class="w-full h-full bg-white rounded-md"></div>
+    </header>
+
+    <div class="w-full h-full flex items-center justify-center">
+      <div
+        x-data="pomodoroTimer()"
+        class="w-120 h-60 max-w-[95vw] flex flex-col items-center justify-center gap-5 bg-white rounded-md"
+      >
+        <div>
+          <span class="text-5xl font-semibold" x-text="minutes"></span>
+          <span class="text-5xl font-semibold">:</span>
+          <span class="text-5xl font-semibold" x-text="seconds"></span>
+        </div>
+        <div class="w-30 h-16 flex items-end">
+          <div
+            :class="toggle ? 'h-16' : 'h-14'"
+            class="bg-blue-800 w-40 rounded"
+          >
+            <button
+              @click="start()"
+              x-text="toggle ? 'Start' : 'Stop'"
+              class="bg-blue-500 text-white font-semibold text-md hover:bg-blue-500/70 w-full h-14 rounded"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function pomodoroTimer() {
+        return {
+          minutes: 10,
+          seconds: 0,
+          toggle: true,
+
+          start() {
+            this.toggle = !this.toggle;
+            if (!this.toggle) this.tick(); // only call tick if starting
+          },
+
+          tick() {
+            if (this.toggle || (this.minutes <= 0 && this.seconds <= 0)) return;
+
+            if (this.seconds <= 0) {
+              if (this.minutes > 0) {
+                this.minutes--;
+                this.seconds = 59;
+              }
+            } else {
+              this.seconds--;
+            }
+
+            // Call tick again after 1 second
+            setTimeout(() => this.tick(), 1000);
+          },
+        };
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+@import "tailwindcss";
+:root{
+    --card-width:
+}
+.bg-primary{
+    background: #020024;
+    background: linear-gradient(130deg, #1CB5E0 0%, #000851 100%);
+}
